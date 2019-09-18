@@ -1,17 +1,19 @@
+
 const pokemonName = document.getElementById('pokemon-name');
 const pokemonHeight = document.getElementById('pokemon-height');
-const pokemonFrontimg = document.getElementById
-pokemonName.innerText = 'El nombre de mi pokemon es: ';
+const pokemonFrontImg = document.getElementById('pokemon-img-front');
 
 const pokemonApiUrl = 'https://pokeapi.co/api/v2/';
 
 let getPokemonData = async ()=> {
-    const response = await fetch(`${pokemonApiUrl}pokemon/1/`);
-    const pokemon = await response.json();
+    const respose = await fetch(`${pokemonApiUrl}pokemon/1`);
+    const pokemon = await respose.json();
     console.log(pokemon);
-    const {name , height} = pokemonName;
+    const {name , height} = pokemon;
+    const frontImg = pokemon.sprites.front_default;
     pokemonName.innerText = name;
     pokemonHeight.innerText = `La altura es: ${height}`;
-    pokemonFrontimg.src = frontimg
+    pokemonFrontImg.src = frontImg;
 };
+
 getPokemonData();
